@@ -4,6 +4,7 @@ RUN set -ex; \
 	apk upgrade --no-cache --update; \
 	apk add --no-cache \
     sshfs \
+    tini \
   ;
 
-ENTRYPOINT ["sshfs","-f"]
+ENTRYPOINT ["tini", "--", "sshfs","-f"]
